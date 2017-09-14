@@ -3,7 +3,6 @@ package com.n.calendarproviderexample;
 import android.provider.CalendarContract;
 import android.text.format.DateUtils;
 
-import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
 import hirondelle.date4j.DateTime;
@@ -18,7 +17,7 @@ public class CalendarModel {
     String accountName = null;
     String ownerName = null;
 
-
+//////////////
 //    public String mUri = null;
     public long mId = -1;
     public long mCalendarId = -1;
@@ -55,7 +54,7 @@ public class CalendarModel {
 
     public int mAccessLevel = 0;
 
-
+//////////////
     public long id;
 
     public int color;
@@ -231,4 +230,27 @@ public class CalendarModel {
     public static final int INSTANCES_PROJECTION_ORGANIZER_INDEX = 17;
     public static final int INSTANCES_PROJECTION_GUESTS_CAN_INVITE_OTHERS_INDEX = 18;
     public static final int INSTANCES_PROJECTION_DISPLAY_AS_ALLDAY = 19;
+
+    public static final String[] ATTENDEES_PROJECTION = new String[] {
+            CalendarContract.Attendees._ID, // 0
+            CalendarContract.Attendees.ATTENDEE_NAME, // 1
+            CalendarContract.Attendees.ATTENDEE_EMAIL, // 2
+            CalendarContract.Attendees.ATTENDEE_RELATIONSHIP, // 3
+            CalendarContract.Attendees.ATTENDEE_STATUS, // 4
+    };
+    public static final int ATTENDEES_INDEX_ID = 0;
+    public static final int ATTENDEES_INDEX_NAME = 1;
+    public static final int ATTENDEES_INDEX_EMAIL = 2;
+    public static final int ATTENDEES_INDEX_RELATIONSHIP = 3;
+    public static final int ATTENDEES_INDEX_STATUS = 4;
+    public static final String ATTENDEES_WHERE = CalendarContract.Attendees.EVENT_ID + "=? AND attendeeEmail IS NOT NULL";
+
+    public static final String[] REMINDERS_PROJECTION = new String[] {
+            CalendarContract.Reminders._ID, // 0
+            CalendarContract.Reminders.MINUTES, // 1
+            CalendarContract.Reminders.METHOD, // 2
+    };
+    public static final int REMINDERS_INDEX_MINUTES = 1;
+    public static final int REMINDERS_INDEX_METHOD = 2;
+    public static final String REMINDERS_WHERE = CalendarContract.Reminders.EVENT_ID + "=?";
 }
